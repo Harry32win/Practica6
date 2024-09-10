@@ -1,0 +1,306 @@
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-09-10 19:52:48.350351', '2024-09-10 19:52:48.350357') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBuys (20240910194745)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "buys" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "category" varchar, "description" text, "amount" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240910194745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-09-10 14:12:50 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BuysController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering buys/index.html.erb within layouts/application
+  [1m[36mBuy Load (7.8ms)[0m  [1m[34mSELECT "buys".* FROM "buys"[0m
+  ↳ app/views/buys/index.html.erb:8
+  Rendered buys/index.html.erb within layouts/application (Duration: 23.2ms | GC: 0.2ms)
+Started GET "/" for ::1 at 2024-09-10 14:12:51 -0600
+Processing by BuysController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering buys/index.html.erb within layouts/application
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys"[0m
+  ↳ app/views/buys/index.html.erb:8
+  Rendered buys/index.html.erb within layouts/application (Duration: 24.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1214.7ms | GC: 91.5ms)
+Completed 200 OK in 1579ms (Views: 1236.5ms | ActiveRecord: 8.0ms (1 query, 0 cached) | GC: 95.2ms)
+
+
+  Rendered layout layouts/application.html.erb (Duration: 787.4ms | GC: 122.2ms)
+Completed 200 OK in 790ms (Views: 788.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 122.4ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-09-10 14:12:52 -0600
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/new" for ::1 at 2024-09-10 14:13:00 -0600
+Processing by BuysController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering buys/new.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 48.4ms | GC: 0.5ms)
+  Rendered buys/new.html.erb within layouts/application (Duration: 51.8ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | GC: 0.7ms)
+Completed 200 OK in 70ms (Views: 56.4ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/buys/new" for ::1 at 2024-09-10 14:22:40 -0600
+Processing by BuysController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering buys/new.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 6.2ms | GC: 0.0ms)
+  Rendered buys/new.html.erb within layouts/application (Duration: 8.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | GC: 0.2ms)
+Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/buys" for ::1 at 2024-09-10 14:28:26 -0600
+Processing by BuysController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "buy"=>{"category"=>"Ropa", "description"=>"Uniforme de clase completo", "amount"=>"500.0"}, "commit"=>"Create Buy"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/buys_controller.rb:27:in `block in create'
+  [1m[36mBuy Create (9.1ms)[0m  [1m[32mINSERT INTO "buys" ("category", "description", "amount", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["category", "Ropa"], ["description", "Uniforme de clase completo"], ["amount", 500.0], ["created_at", "2024-09-10 20:28:26.403127"], ["updated_at", "2024-09-10 20:28:26.403127"]]
+  ↳ app/controllers/buys_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/buys_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/buys/1
+Completed 302 Found in 45ms (ActiveRecord: 14.3ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:28:26 -0600
+Processing by BuysController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.2ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 10.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | GC: 0.3ms)
+Completed 200 OK in 23ms (Views: 13.6ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/buys" for ::1 at 2024-09-10 14:28:55 -0600
+Processing by BuysController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering buys/index.html.erb within layouts/application
+  [1m[36mBuy Load (0.3ms)[0m  [1m[34mSELECT "buys".* FROM "buys"[0m
+  ↳ app/views/buys/index.html.erb:8
+  Rendered buys/_buy.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered buys/index.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.3ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:28:55 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 2.2ms | GC: 0.2ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 3.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.2ms)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:29:35 -0600
+Processing by BuysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.1ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:29:39 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 4.9ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.2ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:29:40 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 3.7ms | GC: 0.3ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 4.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.3ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:29:41 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 2.1ms | GC: 0.2ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 2.7ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.2ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started PATCH "/buys/1" for ::1 at 2024-09-10 14:29:44 -0600
+Processing by BuysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "buy"=>{"category"=>"Ropa", "description"=>"Uniforme de clase completo", "amount"=>"500.0"}, "commit"=>"Update Buy", "id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+Redirected to http://localhost:3000/buys/1
+Completed 302 Found in 9ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:29:44 -0600
+Processing by BuysController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.3ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:29:46 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 2.2ms | GC: 0.2ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 2.7ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.2ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:29:48 -0600
+Processing by BuysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.2ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:35:46 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (1.3ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.4ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:35:48 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 2.2ms | GC: 0.2ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 3.4ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | GC: 0.2ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started PATCH "/buys/1" for ::1 at 2024-09-10 14:35:51 -0600
+Processing by BuysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "buy"=>{"category"=>"Ropa", "description"=>"Uniforme de clase completo", "amount"=>"500.0"}, "commit"=>"Update Buy", "id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+Redirected to http://localhost:3000/buys/1
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:35:51 -0600
+Processing by BuysController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 7.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/buys/1" for ::1 at 2024-09-10 14:44:38 -0600
+Processing by BuysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (4.5ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/show.html.erb within layouts/application
+  Rendered buys/_buy.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered buys/show.html.erb within layouts/application (Duration: 5.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | GC: 2.1ms)
+Completed 200 OK in 109ms (Views: 66.4ms | ActiveRecord: 4.5ms (1 query, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-09-10 14:44:39 -0600
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/buys/1/edit" for ::1 at 2024-09-10 14:44:41 -0600
+Processing by BuysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBuy Load (0.1ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 3.7ms | GC: 0.1ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 5.2ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 0.1ms)
+Completed 200 OK in 12ms (Views: 8.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started PATCH "/buys/1" for ::1 at 2024-09-10 14:45:16 -0600
+Processing by BuysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "buy"=>{"category"=>"", "description"=>"", "amount"=>""}, "commit"=>"Update Buy", "id"=>"1"}
+  [1m[36mBuy Load (0.9ms)[0m  [1m[34mSELECT "buys".* FROM "buys" WHERE "buys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/buys_controller.rb:63:in `set_buy'
+  Rendering layout layouts/application.html.erb
+  Rendering buys/edit.html.erb within layouts/application
+  Rendered buys/_form.html.erb (Duration: 4.4ms | GC: 0.4ms)
+  Rendered buys/edit.html.erb within layouts/application (Duration: 5.2ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | GC: 0.4ms)
+Completed 422 Unprocessable Content in 16ms (Views: 9.1ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.7ms)
+
+
